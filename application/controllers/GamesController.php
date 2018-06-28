@@ -1,6 +1,6 @@
 <?php
 
-class Game extends CI_Controller {
+class GamesController extends CI_Controller {
 	
 	public function __construct()
 	{
@@ -10,7 +10,7 @@ class Game extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('game_creation');
+		$this->load->view('games/index');
 	}
 	
 		//	L'affichage de la variable $output est le comportement par défaut.
