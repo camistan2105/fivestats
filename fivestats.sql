@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `games`
+-- Structure de la table `gamesa`
 --
 
 CREATE TABLE `games` (
