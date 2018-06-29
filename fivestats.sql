@@ -114,8 +114,7 @@ ALTER TABLE `games`
 -- Index pour la table `goals_players_games`
 --
 ALTER TABLE `goals_players_games`
-  ADD KEY `game_id` (`game_id`),
-  ADD KEY `player_id` (`player_id`);
+  ADD PRIMARY KEY (`game_id`, `player_id`);
 
 --
 -- Index pour la table `players`
@@ -133,8 +132,7 @@ ALTER TABLE `teams`
 -- Index pour la table `teams_players`
 --
 ALTER TABLE `teams_players`
-  ADD KEY `team_id` (`team_id`),
-  ADD KEY `player_id` (`player_id`);
+  ADD PRIMARY KEY (`team_id`, `player_id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
