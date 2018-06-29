@@ -7,6 +7,7 @@
 	<link href="<?php echo base_url(); ?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<script src="<?php echo base_url(); ?>assets/js/jquery-3.3.1.js" ></script>
 	<script src="<?php echo base_url(); ?>assets/js/bootstrap.bundle.js" ></script>
+	<script src="<?php echo base_url(); ?>assets/js/site.js" ></script>
 </head>
 <body>
 
