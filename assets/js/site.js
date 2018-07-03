@@ -25,6 +25,28 @@ function showTeamCard(element, teamId, endPoint) {
 	});
 }
 
-$( document ).ready(function() {
+function loadTeamCreationModal(endPoint){
+	$.ajax({
+		url: endPoint,
+		method: 'post',
+		dataType: 'json',
+		success: function(players){			
+			var playersSelectHtml = "";
 
+			$.each(players, function(index, player) {
+					playersSelectHtml += '<option value="' + player.id + '" >' + player.name + '</option>';
+			});
+
+			$('#team_players_select').html(playersSelectHtml);
+			$('#team_creation_modal').modal('show');
+		}
+	});
+}
+
+function getPlayers(endPoint) {
+
+}
+
+$(document).ready(function() {
+	$('#team_players_select').multiSelect();
 });

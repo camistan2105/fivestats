@@ -13,20 +13,13 @@
 
         <form>
           <div class="form-group">
-            <label for="team_name">Nom de l'équipe</label>
-            <input type="text" class="form-control" id="team_name" >
+            <label for="team_name_input">Nom de l'équipe</label>
+            <input type="text" class="form-control" id="team_name_input" >
           </div>
           <div class="form-group">
-            <label for="exampleFormControlSelect2">Joueurs</label>
-            <select multiple class="form-control" id="exampleFormControlSelect2">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <label for="team_players_select">Joueurs</label>
+            <select multiple="multiple" id="team_players_select" name="team_players_select">
             </select>
-            <div id="example" class="form-control"></div>
-
           </div>
         </form>
 
