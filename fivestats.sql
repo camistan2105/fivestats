@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 28 Juin 2018 à 13:55
+-- Généré le :  Mer 04 Juillet 2018 à 21:43
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.2.4
 
@@ -31,9 +31,20 @@ CREATE TABLE `games` (
   `date` datetime NOT NULL,
   `team1_id` int(11) NOT NULL,
   `team2_id` int(11) NOT NULL,
-  `team1_goals` int(11) NOT NULL,
-  `team2_goals` int(11) NOT NULL
+  `team1_goals` int(11) DEFAULT NULL,
+  `team2_goals` int(11) DEFAULT NULL,
+  `is_played` bit(1) NOT NULL DEFAULT b'0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `games`
+--
+
+INSERT INTO `games` (`id`, `date`, `team1_id`, `team2_id`, `team1_goals`, `team2_goals`, `is_played`) VALUES
+(1, '2018-06-13 00:00:00', 1, 2, 19, 4, b'1'),
+(2, '2018-07-25 00:00:00', 1, 2, NULL, NULL, b'0'),
+(3, '2018-07-11 00:00:00', 2, 1, 10, 4, b'1'),
+(4, '2018-07-18 00:00:00', 1, 2, 5, 5, b'1');
 
 -- --------------------------------------------------------
 
@@ -87,6 +98,15 @@ CREATE TABLE `teams` (
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Contenu de la table `teams`
+--
+
+INSERT INTO `teams` (`id`, `name`) VALUES
+(1, 'team jorge le buteur de folie'),
+(2, 'team 2'),
+(14, 'test');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +117,28 @@ CREATE TABLE `teams_players` (
   `team_id` int(11) NOT NULL,
   `player_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `teams_players`
+--
+
+INSERT INTO `teams_players` (`team_id`, `player_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(14, 5),
+(2, 6),
+(14, 6),
+(2, 7),
+(14, 7),
+(2, 8),
+(14, 8),
+(2, 9),
+(14, 9),
+(14, 10),
+(2, 11);
 
 --
 -- Index pour les tables exportées
@@ -114,7 +156,8 @@ ALTER TABLE `games`
 -- Index pour la table `goals_players_games`
 --
 ALTER TABLE `goals_players_games`
-  ADD PRIMARY KEY (`game_id`, `player_id`);
+  ADD PRIMARY KEY (`game_id`,`player_id`),
+  ADD KEY `s_key_goals_players_games_players` (`player_id`);
 
 --
 -- Index pour la table `players`
@@ -132,7 +175,8 @@ ALTER TABLE `teams`
 -- Index pour la table `teams_players`
 --
 ALTER TABLE `teams_players`
-  ADD PRIMARY KEY (`team_id`, `player_id`);
+  ADD PRIMARY KEY (`team_id`,`player_id`),
+  ADD KEY `s_key_teams_players_players` (`player_id`);
 
 --
 -- AUTO_INCREMENT pour les tables exportées
@@ -142,7 +186,7 @@ ALTER TABLE `teams_players`
 -- AUTO_INCREMENT pour la table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `players`
 --
@@ -152,7 +196,7 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT pour la table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- Contraintes pour les tables exportées
 --
@@ -175,8 +219,8 @@ ALTER TABLE `goals_players_games`
 -- Contraintes pour la table `teams_players`
 --
 ALTER TABLE `teams_players`
-  ADD CONSTRAINT `s_key_teams_players_players` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `s_key_teams_players_teams` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `s_key_teams_players_players` FOREIGN KEY (`player_id`) REFERENCES `players` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `s_key_teams_players_teams` FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

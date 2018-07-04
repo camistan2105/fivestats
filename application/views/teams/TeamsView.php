@@ -1,7 +1,7 @@
 <div class="container" >
 	<div class="row" >
 		<div class="col-lg-12" >
-			<button type="button" class="btn btn-secondary" onclick="loadTeamCreationModal('<?= site_url('PlayersController/get_players') ?>')" >Ajouter une équipe</button>
+			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#team_creation_modal" >Ajouter une équipe</button>
 			<?php include('./application/views/teams/TeamsCreationModalView.php') ?>
 		</div>
 	</div>	

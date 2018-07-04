@@ -70,4 +70,22 @@ class TeamsModel extends CI_Model
 				->get()
 				->result_array()[0];
 	}
+
+	public function insert_team($team_name, $team_players)
+	{
+		$data = array(
+		   'name' => $team_name
+		);
+
+		$this->db->insert($this->table_teams, $data);
+		$inserted_team_id = $this->db->insert_id();
+
+		foreach ($team_players as $player_id) {
+			$data = array(
+		   		'team_id' => $inserted_team_id,
+		   		'player_id' => $player_id
+			);
+			$this->db->insert($this->table_teams_players, $data);
+		}
+	}
 }

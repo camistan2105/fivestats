@@ -25,26 +25,22 @@ function showTeamCard(element, teamId, endPoint) {
 	});
 }
 
-function loadTeamCreationModal(endPoint){
-	$.ajax({
+function insertTeam(endPoint){
+	var selectedPlayers = $('#team_players_select').val();
+	var teamName = $('#team_name_input').val();
+
+    $.ajax({
 		url: endPoint,
 		method: 'post',
+		data: {team_name: teamName, team_players: selectedPlayers},
 		dataType: 'json',
-		success: function(players){			
-			var playersSelectHtml = "";
-
-			$.each(players, function(index, player) {
-					playersSelectHtml += '<option value="' + player.id + '" >' + player.name + '</option>';
-			});
-
-			$('#team_players_select').html(playersSelectHtml);
-			$('#team_creation_modal').modal('show');
+		async: false,
+		success: function(result){
 		}
 	});
-}
 
-function getPlayers(endPoint) {
-
+	$('#team_creation_modal').modal('hide');
+	location.reload();
 }
 
 $(document).ready(function() {

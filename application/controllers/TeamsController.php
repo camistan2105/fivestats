@@ -6,11 +6,14 @@ class TeamsController extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('TeamsModel');
+		$this->load->model('PlayersModel');
 	}
 
 	public function index()
 	{
 		$data['teams'] = $this->TeamsModel->get_teams();
+		//if admin load players
+		$data['players'] = $this->PlayersModel->get_players();
 		$this->load->view('templates/Header');
 		$this->load->view('teams/TeamsView', $data);
 		//if Admin
@@ -30,6 +33,12 @@ class TeamsController extends CI_Controller {
 		$team_data['stats'] += $this->TeamsModel->get_losses($post_data['team_id']);
 		$team_data['stats'] += $this->TeamsModel->get_draws($post_data['team_id']);
 		echo json_encode($team_data);
+	}
+
+	public function insert_team()
+	{
+		$post_data = $this->input->post();
+		$this->TeamsModel->insert_team($post_data['team_name'], $post_data['team_players']);
 	}
 	
 		//	L'affichage de la variable $output est le comportement par défaut.
