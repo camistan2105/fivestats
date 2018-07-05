@@ -1,6 +1,6 @@
 <?php
 
-class GamesController extends CI_Controller {
+class Games extends CI_Controller {
 	
 	public function __construct()
 	{

@@ -25,6 +25,26 @@ function showTeamCard(element, teamId, endPoint) {
 	});
 }
 
+function showPlayerCard(element, playerId, endPoint) {
+    $.ajax({
+		url: endPoint,
+		method: 'post',
+		data: {player_id: playerId},
+		dataType: 'json',
+		success: function(player_data){
+			
+			$('.player-list').removeClass('active');
+			$(element).addClass('active');
+
+			$('#name_player_card').html(player_data['player']['name']);
+			$('#played_games_player_card').html(player_data['stats']['played_games']);
+			//$('#wins_team_card').html(team_data['stats']['wins']);
+			//$('#draws_team_card').html(team_data['stats']['draws']);
+			//$('#losses_team_card').html(team_data['stats']['losses']);
+		}
+	});
+}
+
 function insertTeam(endPoint){
 	var selectedPlayers = $('#team_players_select').val();
 	var teamName = $('#team_name_input').val();

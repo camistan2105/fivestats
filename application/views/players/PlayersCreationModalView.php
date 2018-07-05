@@ -36,7 +36,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary" onclick="insertTeam('<?= site_url('Teams/insert_team') ?>');" >Valider</button>
+        <button type="button" class="btn btn-primary" onclick="insertTeam('<?= site_url('TeamsController/insert_team') ?>');" >Valider</button>
       </div>
 
     </div>

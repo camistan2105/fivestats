@@ -1,6 +1,6 @@
 <?php
 
-class TeamsController extends CI_Controller {
+class Teams extends CI_Controller {
 	
 	public function __construct()
 	{
