@@ -23,7 +23,20 @@ class Players extends CI_Controller {
 		$player_data = array();
 		$player_data['player'] = $this->PlayersModel->get_player_by_id($post_data['player_id']);
 		$player_data['stats'] = $this->PlayersModel->get_player_played_games($post_data['player_id']);
-		//$team_data['stats'] += $this->TeamsModel->get_wins($post_data['team_id']);
+		$player_data['stats'] += $this->PlayersModel->get_player_wins($post_data['player_id']);
+		if($player_data['stats']['played_games'] > 0){
+			$player_data['stats']['percent_wins'] = number_format((float)($player_data['stats']['wins'] / $player_data['stats']['played_games']) * 100, 2, '.', '');
+		} else {
+			$player_data['stats']['percent_wins'] = 0;
+		}
+		$player_data['stats'] += $this->PlayersModel->get_player_goals($post_data['player_id']);
+
+		if($player_data['stats']['played_games'] > 0){
+			$player_data['stats']['goals_per_game'] = number_format((float)($player_data['stats']['goals'] / $player_data['stats']['played_games']), 2, '.', '');
+		} else {
+			$player_data['stats']['goals_per_game'] = 0;
+		}
+		
 		//$team_data['stats'] += $this->TeamsModel->get_losses($post_data['team_id']);
 		//$team_data['stats'] += $this->TeamsModel->get_draws($post_data['team_id']);
 		echo json_encode($player_data);

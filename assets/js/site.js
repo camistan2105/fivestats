@@ -38,8 +38,10 @@ function showPlayerCard(element, playerId, endPoint) {
 
 			$('#name_player_card').html(player_data['player']['name']);
 			$('#played_games_player_card').html(player_data['stats']['played_games']);
-			//$('#wins_team_card').html(team_data['stats']['wins']);
-			//$('#draws_team_card').html(team_data['stats']['draws']);
+			$('#wins_player_card').html(player_data['stats']['wins']);
+			$('#percent_wins_player_card').html(player_data['stats']['percent_wins'] + ' %');
+			$('#goals_player_card').html(player_data['stats']['goals']);
+			$('#goals_per_game_player_card').html(player_data['stats']['goals_per_game']);
 			//$('#losses_team_card').html(team_data['stats']['losses']);
 		}
 	});
