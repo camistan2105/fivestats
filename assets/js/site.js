@@ -65,6 +65,23 @@ function insertTeam(endPoint){
 	location.reload();
 }
 
+function insertPlayer(endPoint){
+	var playerName = $('#player_name_input').val();
+
+    $.ajax({
+		url: endPoint,
+		method: 'post',
+		data: {player_name: playerName},
+		dataType: 'json',
+		async: false,
+		success: function(result){
+		}
+	});
+
+	$('#player_creation_modal').modal('hide');
+	location.reload();
+}
+
 $(document).ready(function() {
 	$('#team_players_select').multiSelect();
 });

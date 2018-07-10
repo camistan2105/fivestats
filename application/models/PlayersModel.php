@@ -59,5 +59,14 @@ class PlayersModel extends CI_Model
 				->get()
 				->result_array()[0];
 	}
+
+	public function insert_player($player_name)
+	{
+		$data = array(
+		   'name' => $player_name
+		);
+
+		$this->db->insert($this->table_players, $data);
+	}
 	
 }

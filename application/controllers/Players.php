@@ -41,6 +41,12 @@ class Players extends CI_Controller {
 		//$team_data['stats'] += $this->TeamsModel->get_draws($post_data['team_id']);
 		echo json_encode($player_data);
 	}
+
+	public function insert_player()
+	{
+		$post_data = $this->input->post();
+		$this->PlayersModel->insert_player($post_data['player_name']);
+	}
 	
 	//	L'affichage de la variable $output est le comportement par défaut.
 //	public function _output($output)
