@@ -60,6 +60,15 @@ class PlayersModel extends CI_Model
 				->result_array()[0];
 	}
 
+	public function get_player_assists($player_id)
+	{
+		return $this->db->select('sum(gpg.assists) as assists')
+				->from($this->table_goals_players_games . ' as gpg')
+				->where('gpg.player_id = ' . $player_id)
+				->get()
+				->result_array()[0];
+	}
+
 	public function insert_player($player_name)
 	{
 		$data = array(

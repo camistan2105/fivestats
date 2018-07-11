@@ -42,6 +42,8 @@ function showPlayerCard(element, playerId, endPoint) {
 			$('#percent_wins_player_card').html(player_data['stats']['percent_wins'] + ' %');
 			$('#goals_player_card').html(player_data['stats']['goals']);
 			$('#goals_per_game_player_card').html(player_data['stats']['goals_per_game']);
+			$('#assists_player_card').html(player_data['stats']['assists']);
+			$('#assists_per_game_player_card').html(player_data['stats']['assists_per_game']);
 			//$('#losses_team_card').html(team_data['stats']['losses']);
 		}
 	});

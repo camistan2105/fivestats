@@ -8,6 +8,8 @@
 		<p class="card-text" >% victoires : <span id="percent_wins_player_card" ></span></p>
 		<p class="card-text" >Buts : <span id="goals_player_card" ></span></p>
 		<p class="card-text" >Buts / match : <span id="goals_per_game_player_card" ></span></p>
+		<p class="card-text" >Assists : <span id="assists_player_card" ></span></p>
+		<p class="card-text" >Assists / match : <span id="assists_per_game_player_card" ></span></p>
 	</div>
 </div>
 

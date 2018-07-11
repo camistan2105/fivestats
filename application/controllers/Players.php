@@ -29,12 +29,19 @@ class Players extends CI_Controller {
 		} else {
 			$player_data['stats']['percent_wins'] = 0;
 		}
-		$player_data['stats'] += $this->PlayersModel->get_player_goals($post_data['player_id']);
 
+		$player_data['stats'] += $this->PlayersModel->get_player_goals($post_data['player_id']);
 		if($player_data['stats']['played_games'] > 0){
 			$player_data['stats']['goals_per_game'] = number_format((float)($player_data['stats']['goals'] / $player_data['stats']['played_games']), 2, '.', '');
 		} else {
 			$player_data['stats']['goals_per_game'] = 0;
+		}
+
+		$player_data['stats'] += $this->PlayersModel->get_player_assists($post_data['player_id']);
+		if($player_data['stats']['played_games'] > 0){
+			$player_data['stats']['assists_per_game'] = number_format((float)($player_data['stats']['assists'] / $player_data['stats']['played_games']), 2, '.', '');
+		} else {
+			$player_data['stats']['assists_per_game'] = 0;
 		}
 		
 		//$team_data['stats'] += $this->TeamsModel->get_losses($post_data['team_id']);
