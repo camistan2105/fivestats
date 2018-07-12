@@ -25,7 +25,7 @@
 			<a class="nav-link" href="<?= site_url('Teams') ?>">Equipes</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Matchs</a>
+			<a class="nav-link" href="<?= site_url('Games') ?>">Matchs</a>
 		</li>
 	</ul>
 	

@@ -6,11 +6,15 @@ class Games extends CI_Controller {
 	{
 		//	Obligatoire
 		parent::__construct();
+		$this->load->model('GamesModel');
 	}
 
 	public function index()
 	{
-		$this->load->view('games/index');
+		$data['games'] = $this->GamesModel->get_games();
+		$this->load->view('templates/Header');
+		$this->load->view('games/GamesView', $data);
+		$this->load->view('templates/Footer');
 	}
 	
 		//	L'affichage de la variable $output est le comportement par défaut.

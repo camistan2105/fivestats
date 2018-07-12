@@ -9,7 +9,7 @@ class GamesModel extends CI_Model
 	{
 		return $this->db->select('*')
 				->from($this->table)
-				->order_by('id', 'desc')
+				->order_by('date', 'desc')
 				->get()
 				->result();
 	}
