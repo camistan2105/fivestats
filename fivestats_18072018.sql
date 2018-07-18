@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 11 Juillet 2018 à 20:06
+-- Généré le :  Mer 18 Juillet 2018 à 19:22
 -- Version du serveur :  5.7.14
 -- Version de PHP :  7.2.4
 
@@ -41,7 +41,8 @@ CREATE TABLE `games` (
 --
 
 INSERT INTO `games` (`id`, `date`, `team1_id`, `team2_id`, `team1_goals`, `team2_goals`, `is_played`) VALUES
-(5, '2018-07-11 00:00:00', 18, 19, 8, 14, b'1');
+(5, '2018-07-11 00:00:00', 18, 19, 8, 14, b'1'),
+(6, '2018-07-18 00:00:00', 20, 21, 11, 12, b'1');
 
 -- --------------------------------------------------------
 
@@ -70,7 +71,17 @@ INSERT INTO `goals_players_games` (`game_id`, `player_id`, `goals`, `assists`) V
 (5, 22, 1, 1),
 (5, 23, 0, 1),
 (5, 24, 1, 0),
-(5, 25, 3, 0);
+(5, 25, 3, 0),
+(6, 17, 3, 1),
+(6, 18, 1, 1),
+(6, 19, 1, 1),
+(6, 20, 2, 4),
+(6, 21, 3, 4),
+(6, 22, 0, 0),
+(6, 24, 2, 1),
+(6, 26, 3, 2),
+(6, 27, 2, 1),
+(6, 28, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +108,10 @@ INSERT INTO `players` (`id`, `name`) VALUES
 (22, 'Tony'),
 (23, 'Patrick'),
 (24, 'Baptiste'),
-(25, 'Kery');
+(25, 'Kery'),
+(26, 'Moîse phil\'s poto'),
+(27, 'Jean-nicolas'),
+(28, 'Camille');
 
 -- --------------------------------------------------------
 
@@ -116,7 +130,9 @@ CREATE TABLE `teams` (
 
 INSERT INTO `teams` (`id`, `name`) VALUES
 (18, 'Team BBPTS'),
-(19, 'Team KLSPJ');
+(19, 'Team KLSPJ'),
+(20, 'Team CJTBS'),
+(21, 'Team PLSBM');
 
 -- --------------------------------------------------------
 
@@ -136,14 +152,24 @@ CREATE TABLE `teams_players` (
 INSERT INTO `teams_players` (`team_id`, `player_id`) VALUES
 (19, 16),
 (19, 17),
+(21, 17),
 (19, 18),
+(20, 18),
 (19, 19),
+(21, 19),
 (18, 20),
+(20, 20),
 (18, 21),
+(21, 21),
 (18, 22),
+(20, 22),
 (18, 23),
 (18, 24),
-(19, 25);
+(21, 24),
+(19, 25),
+(21, 26),
+(20, 27),
+(20, 28);
 
 --
 -- Index pour les tables exportées
@@ -191,17 +217,17 @@ ALTER TABLE `teams_players`
 -- AUTO_INCREMENT pour la table `games`
 --
 ALTER TABLE `games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT pour la table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Contraintes pour les tables exportées
 --
